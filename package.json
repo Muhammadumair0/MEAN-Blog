@@ -1,0 +1,33 @@
+{
+  "name": "mean-blog",
+  "version": "1.0.0",
+  "description": "blog-post-application",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Muhammadumair0/MEAN-Blog.git"
+  },
+  "keywords": [
+    "MEAN",
+    "Stack",
+    "Angular",
+    "2",
+    "Application"
+  ],
+  "author": "MUHAMMAD umair khan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Muhammadumair0/MEAN-Blog/issues"
+  },
+  "homepage": "https://github.com/Muhammadumair0/MEAN-Blog#readme",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.2",
+    "mongodb": "^3.0.4"
+  }
+}

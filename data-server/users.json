@@ -1,0 +1,14 @@
+[
+  {
+    "username": "admin",
+    "email": "abc@xyz.com",
+    "admin": true,
+    "password": "Pt4bvZSSI4KN4g"
+  },
+  {
+    "username": "umair",
+    "email": "abc@xyz.com",
+    "admin": false,
+    "password": "ANz75xWo3n2J3Y"
+  }
+]

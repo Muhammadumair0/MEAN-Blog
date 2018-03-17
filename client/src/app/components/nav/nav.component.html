@@ -1,0 +1,25 @@
+<div class="nav">
+  <div class="nav-heading">
+    <a>ngEvents</a>
+  </div>
+  <ul class="nav-ul">
+    <div class="nav-ul-section">
+      <li class="nav-ul-section-li1" [routerLink]="['/about']" [routerLinkActive]="['active-link']" [routerLinkActiveOptions]="{exact: true}">About</li>
+      <li class="nav-ul-section-li2" [routerLink]="['/schedule/events']" [routerLinkActive]="['active-link']" [routerLinkActiveOptions]="{exact:
+      true}">Schedule Events</li>
+      <li class="nav-ul-section-li3" [routerLink]="['/create/events']" [routerLinkActive]="['active-link']" [routerLinkActiveOptions]="{exact:
+      true}">Create Events</li>
+      <li class="nav-ul-section-li4" [routerLink]="['/register']" [routerLinkActive]="['active-link']" [routerLinkActiveOptions]="{exact:
+      true}">Registration</li>
+    </div>
+  </ul>
+  <div class="nav-section">
+    <div class="nav-section-heading2">
+      <a>Welcome john</a>
+    </div>
+    <form ngForm="formValue" #formValue class="nav-section-form">
+      <input class="nav-section-form-input" ngModel name="search" type="text">
+      <button class="nav-section-form-button">Search</button>
+    </form>
+  </div>
+</div>
