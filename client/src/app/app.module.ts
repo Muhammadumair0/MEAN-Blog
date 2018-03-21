@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { HttpModule } from "@angular/http";
+import { FlashMessagesModule } from "angular2-flash-messages";
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
 import { MainHomeComponent } from "./components/main-home/main-home.component";
@@ -15,7 +16,8 @@ import { AuthService } from "./services/auth.service";
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    FlashMessagesModule.forRoot()
   ],
   declarations: [
     AppComponent,

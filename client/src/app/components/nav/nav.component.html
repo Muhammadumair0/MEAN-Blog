@@ -4,16 +4,18 @@
   </div>
   <ul class="nav-ul">
     <div class="nav-ul-section">
-      <li class="nav-ul-section-li1" [routerLink]="['/about']" [routerLinkActive]="['active-link']" [routerLinkActiveOptions]="{exact: true}">About</li>
-      <li class="nav-ul-section-li2" [routerLink]="['/schedule/events']" [routerLinkActive]="['active-link']" [routerLinkActiveOptions]="{exact:
-      true}">Schedule Events</li>
+      <li *ngIf="authService.loggedIn()" class="nav-ul-section-li1" [routerLink]="['/profile']" [routerLinkActive]="['active-link']"
+        [routerLinkActiveOptions]="{exact: true}">Profile</li>
+      <li class="nav-ul-section-li2" [routerLink]="['/login']" [routerLinkActive]="['active-link']" [routerLinkActiveOptions]="{exact:
+      true}" *ngIf="!authService.loggedIn()">Login</li>
       <li class="nav-ul-section-li3" [routerLink]="['/create/events']" [routerLinkActive]="['active-link']" [routerLinkActiveOptions]="{exact:
-      true}">Create Events</li>
+      true}" *ngIf="authService.loggedIn()">Create Events</li>
       <li class="nav-ul-section-li4" [routerLink]="['/register']" [routerLinkActive]="['active-link']" [routerLinkActiveOptions]="{exact:
-      true}">Registration</li>
+      true}" *ngIf="!authService.loggedIn()">Registration</li>
+      <li href="#" *ngIf="authService.loggedIn()" (click)="onLogOut()">Logout</li>
     </div>
   </ul>
-  <div class="nav-section">
+  <div *ngIf="authService.loggedIn()" class="nav-section">
     <div class="nav-section-heading2">
       <a>Welcome john</a>
     </div>

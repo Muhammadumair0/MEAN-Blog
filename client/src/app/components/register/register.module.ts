@@ -13,7 +13,7 @@ import { routes } from './register-routing.module';
     ReactiveFormsModule
   ],
   declarations: [RegisterComponent],//may export this for no reasons!
-  exports: [ReactiveFormsModule],
+  exports: [RouterModule],
   providers: []
 })
 export class RegisteModule { }

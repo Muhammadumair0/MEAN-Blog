@@ -1,6 +1,7 @@
 import { Routes, LoadChildren } from '@angular/router';
 import { MainHomeComponent } from "./components/main-home/main-home.component"
 import { RegisteModule } from "./components/register/register.module";
+import { LoginModule } from "./components/login/login.module";
 
 
 export const routes: Routes = [
@@ -29,7 +30,16 @@ export const routes: Routes = [
     {
         path: "register",
         loadChildren: "./components/register/register.module#RegisteModule"
+    },
+    {
+        path: "login",
+        loadChildren: "./components/login/login.module#LoginModule"
+    },
+    {
+        path: "profile",
+        loadChildren: "./components/profile/profile.module#ProfileModule"
     }
+
 
 ];
 

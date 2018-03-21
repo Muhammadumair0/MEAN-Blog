@@ -65,7 +65,7 @@
         grid-area: t;
     }
     .nav-ul {
-        padding:0;
+        padding: 0;
         align-items: start;
         grid-area: l;
         grid-row: 2/span 1;

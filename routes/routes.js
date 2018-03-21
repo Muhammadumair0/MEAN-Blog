@@ -1,8 +1,13 @@
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const ObjectId = require('mongodb').ObjectID;
+require('dotenv').config();
 
 function routes(router, database) {
     const db = database.db("mean-blog");
     const collectionUsers = db.collection("users");
+
+    //for registering new user 
 
     router.post("/register", (req, res) => {
         const user = req.body;
@@ -77,6 +82,62 @@ function routes(router, database) {
                 }
             });
         }
+    });
+
+
+
+    //for logging user in
+
+    router.post("/api/login", (req, res) => {
+        if (!req.body.username) {
+            res.json({ status: 401, message: "User is not available" });
+        }
+        else if (!req.body.password) {
+            res.json({ status: 401, message: "Password was not provided" });
+        } else {
+            collectionUsers.findOne({ "username": req.body.username }, (err, results) => {
+                if (results === null) {
+                    res.json({ status: 401, message: "Username is wrong" });
+                } else {
+                    const passwordCheck = bcrypt.compareSync(req.body.password, results.password);
+                    if (passwordCheck) {
+                        const token = jwt.sign({ userId: results._id }, process.env.JWT_SECRET, { expiresIn: "24h" });
+                        res.json({ status: 200, message: "You are sucessfully logged In", token, "username": results.username });
+                    } else {
+                        res.json({ status: 401, message: "You have entered wrong passwrod" });
+                    }
+                }
+            });
+        }
+    });
+
+    //any route that comes after this middleware will run this middle ware and before routes will work without using this middleware
+    router.use((req, res, next) => {
+        const token = req.headers.authorization;
+        console.log(token);
+        if (!token) {
+            res.send({ status: 401, message: "No TOKEN provided" });
+        } else {
+            jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+                if (err) {
+                    res.send({ status: 401, message: "Token not matched" });
+                } else {
+                    req.decoded = decoded;
+                    next();
+                }
+            });
+        }
+    });
+
+    router.get("/profile", (req, res) => {
+        collectionUsers.findOne({ _id: ObjectId(req.decoded.userId) }, (err, results) => {
+            console.log(results);
+            if (results === null) {
+                res.send({ status: 200, message: "You are not in our database" });
+            } else {
+                res.send({ status: 200, results });
+            }
+        })
     });
 
 
